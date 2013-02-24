@@ -1,0 +1,485 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<style type="text/css">
+			#title {
+				width: 100%;
+				text-align: center;
+			}
+			.generator {
+				width: 30%;
+				float: left;
+				margin-left: 1%;
+			}
+			#synth {
+				margin-right: 2%;
+				margin-left: 2%;
+			}
+			#filters {
+				clear: both;
+			}
+			.clearboth {
+				clear: both;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1 id="title">HW2</h1>
+		<div id="synth" class="well">
+			<div id="gen1" class="well generator">
+				<h3>Generator 1</h3>
+				<div class="well">
+					<p>Press button 'a'</p>
+					<button class="btn" onClick="hw2.generator1.play()">Play</button>
+				</div>
+				<div class="well">
+					<p>Switch: <span class="switchText"></span></p>
+					<button class="btn" onClick="hw2.generator1.soundOn()">On</button>
+					<button class="btn" onClick="hw2.generator1.soundOff()">Off</button>
+				</div>
+				<div class="well waveform">
+					<p>Waveform: <span class="waveformText"></span></p>
+					<div class="btn-group">
+						<a class="btn dropdown-toggle" data-toggle="dropdown">
+					    	Waveform List
+					    	<span class="caret"></span>
+					  	</a>
+						<ul class="dropdown-menu">
+							<li><a class="wfType" href="#" onClick="hw2.generator1.setWaveform(hw2.generator1.getOscillator().SINE)">Sine</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator1.setWaveform(hw2.generator1.getOscillator().SQUARE)">Square</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator1.setWaveform(hw2.generator1.getOscillator().TRIANGLE)">Triangle</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator1.setWaveform(hw2.generator1.getOscillator().SAWTOOTH)">Sawtooth</a></li>
+							<li><a class="wfType" href="#">Noise</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="well">
+					<p>Attack: <span class="attackText"></span></p>
+					<input id="attack" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator1.setAttack(this.value)" />
+					<p>Decay: <span class="decayText"></span></p>
+					<input id="decay" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator1.setDecay(this.value)" />
+					<p>Sustain: <span class="sustainText"></span></p>
+					<input id="sustain" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator1.setSustain(this.value)" />
+					<p>Release: <span class="releaseText"></span></p>
+					<input id="release" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator1.setRelease(this.value)" />
+				</div>
+			</div>
+
+			<div id="gen2" class="well generator">
+				<h3>Generator 2</h3>
+				<div class="well">
+					<p>Press button 's'</p>
+					<button class="btn" onClick="hw2.generator2.play()">Play</button>
+				</div>
+				<div class="well">
+					<p>Switch: <span class="switchText"></span></p>
+					<button class="btn" onClick="hw2.generator2.soundOn()">On</button>
+					<button class="btn" onClick="hw2.generator2.soundOff()">Off</button>
+				</div>
+				<div class="well waveform">
+					<p>Waveform: <span class="waveformText"></span></p>
+					<div class="btn-group">
+						<a class="btn dropdown-toggle" data-toggle="dropdown">
+					    	Waveform List
+					    	<span class="caret"></span>
+					  	</a>
+						<ul class="dropdown-menu">
+							<li><a class="wfType" href="#" onClick="hw2.generator2.setWaveform(hw2.generator2.getOscillator().SINE)">Sine</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator2.setWaveform(hw2.generator2.getOscillator().SQUARE)">Square</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator2.setWaveform(hw2.generator2.getOscillator().TRIANGLE)">Triangle</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator2.setWaveform(hw2.generator2.getOscillator().SAWTOOTH)">Sawtooth</a></li>
+							<li><a class="wfType" href="#">Noise</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="well">
+					<p>Attack: <span class="attackText"></span></p>
+					<input id="attack" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator2.setAttack(this.value)" />
+					<p>Decay: <span class="decayText"></span></p>
+					<input id="decay" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator2.setDecay(this.value)" />
+					<p>Sustain: <span class="sustainText"></span></p>
+					<input id="sustain" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator2.setSustain(this.value)" />
+					<p>Release: <span class="releaseText"></span></p>
+					<input id="release" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator2.setRelease(this.value)" />
+				</div>
+			</div>
+
+			<div id="gen3" class="well generator">
+				<h3>Generator 3</h3>
+				<div class="well">
+					<p>Press button 'd'</p>
+					<button class="btn" onClick="hw2.generator3.play()">Play</button>
+				</div>
+				<div class="well">
+					<p>Switch: <span class="switchText"></span></p>
+					<button class="btn" onClick="hw2.generator3.soundOn()">On</button>
+					<button class="btn" onClick="hw2.generator3.soundOff()">Off</button>
+				</div>
+				<div class="well waveform">
+					<p>Waveform: <span class="waveformText"></span></p>
+					<div class="btn-group">
+						<a class="btn dropdown-toggle" data-toggle="dropdown">
+					    	Waveform List
+					    	<span class="caret"></span>
+					  	</a>
+						<ul class="dropdown-menu">
+							<li><a class="wfType" href="#" onClick="hw2.generator3.setWaveform(hw2.generator3.getOscillator().SINE)">Sine</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator3.setWaveform(hw2.generator3.getOscillator().SQUARE)">Square</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator3.setWaveform(hw2.generator3.getOscillator().TRIANGLE)">Triangle</a></li>
+							<li><a class="wfType" href="#" onClick="hw2.generator3.setWaveform(hw2.generator3.getOscillator().SAWTOOTH)">Sawtooth</a></li>
+							<li><a class="wfType" href="#">Noise</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="well">
+					<p>Attack: <span class="attackText"></span></p>
+					<input id="attack" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator3.setAttack(this.value)" />
+					<p>Decay: <span class="decayText"></span></p>
+					<input id="decay" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator3.setDecay(this.value)" />
+					<p>Sustain: <span class="sustainText"></span></p>
+					<input id="sustain" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator3.setSustain(this.value)" />
+					<p>Release: <span class="releaseText"></span></p>
+					<input id="release" type="range"  min="0" max="5" value="0" step=".1" onChange="hw2.generator3.setRelease(this.value)" />
+				</div>
+			</div>
+
+			<div id="filters" class="well">
+				<h3>Filters</h3>
+				<div class="well">
+					<p>Volume: <span class="volumeText"></span></p>
+					<input id="release" type="range"  min="0" max="1" value=".5" step=".1" onChange="hw2.filters.setVolume(this.value)" />
+				</div>
+				<div class="well">
+					<p>Low Pass Filter: <span class="lowpassText"></span></p>
+					<input id="release" type="range"  min="0" max="1000" value="300" step="10" onChange="hw2.filters.setLpFreq(this.value)" />
+				</div>
+				<div class="well">
+					<p>High Pass Filter: <span class="highpassText"></span></p>
+					<input id="release" type="range"  min="0" max="1000" value="300" step="10" onChange="hw2.filters.setHpFreq(this.value)" />
+				</div>
+				<div class="well">
+					<p>Band Pass Filter: <span class="bandpassText"></span></p>
+					<input id="release" type="range"  min="0" max="1000" value="300" step="10" onChange="hw2.filters.setBpFreq(this.value)" />
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			/******************************
+			VARIABLES
+			******************************/
+			var hw2 = {};
+			hw2.context = new webkitAudioContext();
+			hw2.filters = new filters(hw2.context, "filters");
+			hw2.generator1 = new generator(hw2.context, "gen1", hw2.filters);
+			hw2.generator2 = new generator(hw2.context, "gen2", hw2.filters);
+			hw2.generator3 = new generator(hw2.context, "gen3", hw2.filters);
+
+			/******************************
+			CONSTRUCTORS
+			******************************/
+			function generator(ctx, id, fltrs) {
+
+				/* Instances */
+				var htmlID = id;
+				var context = ctx;
+				var filters = fltrs;
+				var oscillator = context.createOscillator();
+				var gainADSR = context.createGainNode();
+				var waveform = 0;
+				var attack = 0.3;
+				var decay = 0.3;
+				var sustain = 0.3;
+				var release = 0.3;
+				var switchState = "Off";
+				var waveformText = "Sine";
+
+				/* Getters and Setters */
+				this.getHtmlID = function() {
+					return htmlID;
+				}
+				this.getContext = function() {
+					return context;
+				}
+				this.setContext = function(ctx) {
+					context = ctx;
+				}
+				this.getOscillator = function() {
+					return oscillator;
+				}
+				this.setOscillator = function(osci) {
+					oscillator = osci;
+				}
+				this.getWaveform = function() {
+					return waveform;
+				}
+				this.setWaveform = function(wf) {
+					waveform = wf;
+				}
+				this.getGainADSR = function() {
+					return gainADSR;
+				}
+				this.setGainADSR = function(gain) {
+					gainADSR = gain;
+				}
+				this.getAttack = function() {
+					return attack;
+				}
+				this.setAttack = function(atk) {
+					attack = parseFloat(atk);
+					$("#"+htmlID).find(".attackText").text( atk );
+				}
+				this.getDecay = function() {
+					return decay;
+				}
+				this.setDecay = function(dcy) {
+					decay = parseFloat(dcy);
+					$("#"+htmlID).find(".decayText").text( dcy );
+				}
+				this.getSustain = function() {
+					return sustain;
+				}
+				this.setSustain = function(stn) {
+					sustain = parseFloat(stn);
+					$("#"+htmlID).find(".sustainText").text( stn );
+				}
+				this.getRelease = function() {
+					return release;
+				}
+				this.setRelease = function(rls) {
+					release = parseFloat(rls);
+					$("#"+htmlID).find(".releaseText").text( rls );
+				}
+
+				/* Functions */
+				this.play = function() {
+					oscillator.start(0);
+					this.setupAdsr();
+					this.setupWaveform();
+					this.setupFilters();
+				}
+				this.soundOn = function() {
+					this.connect();
+					switchState = "On";
+					$("#"+htmlID).find(".switchText").text( switchState );
+				}
+				this.soundOff = function() {
+					this.disconnect();
+					switchState = "Off";
+					$("#"+htmlID).find(".switchText").text( switchState );
+				}
+				this.connect = function() {
+					oscillator.connect(gainADSR);
+					gainADSR.connect(filters.getStartNode());	// connect to lowPassFilter, the starting AudioNode
+					filters.connectAll(context.destination);	// connect to all other AudioNodes, which last one connnects to context.destination
+					// gainADSR.connect(filters.getBandPassFilter());
+					// filters.getBandPassFilter().connect(context.destination);
+				}
+				this.disconnect = function() {
+					oscillator.disconnect();
+					gainADSR.disconnect();
+					filters.disconnectAll();
+				}
+				this.setupWaveform = function() {
+					oscillator.type = waveform;
+				}
+				this.setupAdsr = function() {
+					var now = context.currentTime;
+					gainADSR.gain.setValueAtTime(0, now);
+
+					this.setupAttack(now);
+					this.setupDecay(now);
+					this.setupSustain(now);
+					this.setupRelease(now);
+				}
+				this.setupAttack = function(now) {
+			        gainADSR.gain.linearRampToValueAtTime(1.0, now + attack);
+				}
+				this.setupDecay = function(now) {
+					gainADSR.gain.linearRampToValueAtTime(0.6, now + attack + decay);
+				}
+				this.setupSustain = function(now) {
+					gainADSR.gain.linearRampToValueAtTime(0.6, now + attack + decay + sustain);
+				}
+				this.setupRelease = function(now) {
+					gainADSR.gain.linearRampToValueAtTime(0.0, now + attack + decay + sustain + release);
+				}
+				this.setupFilters = function() {
+					filters.setupAll();
+				}
+
+				/* Events */
+				$("#"+htmlID).find(".wfType").click( function() {
+					waveformText = $(this).text();
+					$("#"+htmlID).find(".waveformText").text( waveformText );
+				});
+				$("#"+htmlID).ready( function() {
+					$(".switchText").text(switchState);
+					$(".waveformText").text(waveformText);
+					$(".attackText").text(attack);
+					$(".decayText").text(decay);
+					$(".sustainText").text(sustain);
+					$(".releaseText").text(release);
+				});
+
+			}
+
+			function filters(ctx, id) {
+
+				/* Instances */
+				var context = ctx;
+				var htmlID = id;
+				var lowPassFilter = context.createBiquadFilter();
+				var highPassFilter = context.createBiquadFilter();
+				var bandPassFilter = context.createBiquadFilter();
+				var volumeNode = context.createGainNode();
+				var startNode = lowPassFilter;
+				var lpFreq = 300;
+				var hpFreq = 300;
+				var bpFreq = 300;
+				var volume = .5;
+
+				/* Getters and Setters */
+				this.getContext = function() {
+					return context;
+				}
+				this.setContext = function(ctx) {
+					context = ctx;
+				}
+				this.getHtmlID = function() {
+					return htmlID;
+				}
+				this.setHtmlID = function(id) {
+					htmlID = id;
+				}
+				this.getLowPassFilter = function() {
+					return lowPassFilter;
+				}
+				this.setLowPassFilter = function(filter) {
+					lowPassFilter = filter;
+				}
+				this.getHighPassFilter = function() {
+					return highPassFilter;
+				}
+				this.setHighPassFilter = function(filter) {
+					highPassFilter = filter;
+				}
+				this.getBandPassFilter = function() {
+					return bandPassFilter;
+				}
+				this.setBandPassFilter = function(filter) {
+					bandPassFilter = filter;
+				}
+				this.getVolumeNode = function() {
+					return volumeNode;
+				}
+				this.setVolumeNode = function(volNode) {
+					volumeNode = volNode;
+				}
+				this.getLpFreq = function() {
+					return lpFreq;
+				}
+				this.setLpFreq = function(freq) {
+					lpFreq = freq;
+
+					$("#"+htmlID).find(".lowpassText").text( freq );
+				}
+				this.getHpFreq = function() {
+					return hpFreq;
+				}
+				this.setHpFreq = function(freq) {
+					hpFreq = freq;
+
+					$("#"+htmlID).find(".highpassText").text( freq );
+				}
+				this.getBpFreq = function() {
+					return bpFreq;
+				}
+				this.setBpFreq = function(freq) {
+					bpFreq = freq;
+
+					$("#"+htmlID).find(".bandpassText").text( freq );
+				}
+				this.getVolume = function() {
+					return volume;
+				}
+				this.setVolume = function(vol) {
+					volume = vol;
+
+					$("#"+htmlID).find(".volumeText").text( vol );
+				}
+				this.getStartNode = function() {
+					return startNode;
+				}
+
+				/* Functions */
+				this.setupVolume = function() {
+					volumeNode.gain.value = volume;
+				}
+				this.setupLowPassFilter = function() {
+					lowPassFilter.type = lowPassFilter.LOWPASS;
+					lowPassFilter.frequency.value = lpFreq;
+				}
+				this.setupHighPassFilter = function() {
+					highPassFilter.type = highPassFilter.HIGHPASS;
+					highPassFilter.frequency.value = hpFreq;
+				}
+				this.setupBandPassFilter = function() {
+					bandPassFilter.type = bandPassFilter.BANDPASS;
+					bandPassFilter.frequency.value = bpFreq;
+				}
+				this.setupAll = function() {
+					this.setupLowPassFilter();
+					this.setupHighPassFilter();
+					this.setupBandPassFilter();
+					this.setupVolume();
+				}
+				this.connectAll = function(endNode) {
+					lowPassFilter.connect(highPassFilter);
+					highPassFilter.connect(bandPassFilter);
+					bandPassFilter.connect(volumeNode);
+					volumeNode.connect(endNode);
+				}
+				this.disconnectAll = function() {
+					lowPassFilter.disconnect();
+					highPassFilter.disconnect();
+					bandPassFilter.disconnect();
+					volumeNode.disconnect();
+				}
+
+				/* Events */
+				$("#"+htmlID).ready( function() {
+					$(".lowpassText").text(lpFreq);
+					$(".highpassText").text(hpFreq);
+					$(".bandpassText").text(bpFreq);
+					$(".volumeText").text(volume);
+				});
+			}
+
+			/******************************
+			FUNCTIONS
+			******************************/
+
+
+			/******************************
+			EVENTS
+			******************************/
+			// Keyboard Events
+			$(document).keypress( function(e) {
+				if (e.which == 97) {	// 'a'
+					hw2.generator1.play();
+				}
+				if (e.which == 115) {	// 's'
+					hw2.generator2.play();
+				}
+				if (e.which == 100) {	// 'd'
+					hw2.generator3.play();
+				}
+			})
+
+		</script>
+	</body>
+</html>

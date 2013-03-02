@@ -1,2 +1,0 @@
-http://www.softsynth.com/webaudio/gainramp.php
-https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html
